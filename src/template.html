@@ -11,15 +11,21 @@
     <div class="sidebar">
         <input type="text" placeholder="Search">
         <h3>Task</h3>
-        <ul id="tasks-list"></ul>
+        <ul id="tasks-list">
+            <li data-filter="upcoming">Upcoming</li>
+            <li data-filter="today">Today</li>
+            <li data-filter="calendar">Calendar</li>
+            <li data-filter="sticky">Sticky Wall</li>
+        </ul>
         <h3>Categories</h3>
         <ul id="categories-list"></ul>
-        <button id="add-task">Add New Category</button>
+        <button id="add-category">Add New Category</button>
     </div>
     <div class="main">
         <div class="todo-list">
             <h1>Some Title</h1>
             <div>blah blah blah</div>
+            <div class="todo-item">Coffee</div>
         </div>
         <div class="todo-detailsPanel">
             <h3>Task</h3>
