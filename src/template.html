@@ -10,7 +10,7 @@
 <body>
     <div class="sidebar">
         <input type="text" placeholder="Search">
-        <h3>Task</h3>
+        <h3 id="all-tasks">Task</h3>
         <ul id="tasks-list">
             <li data-filter="upcoming">Upcoming</li>
             <li data-filter="today">Today</li>
@@ -23,19 +23,74 @@
     </div>
     <div class="main">
         <div class="todo-list">
-            <h1>Some Title</h1>
-            <div>blah blah blah</div>
-            <div class="todo-item">Coffee</div>
+            <h1 id = "list-title">All Tasks</h1>
+            <button id="add-todo">Add New Task</button>
+            <div id="todos-container"></div>
         </div>
         <div class="todo-detailsPanel">
-            <h3>Task</h3>
-            <label id="task-name">Task Name</label>
-            <label id="task-description">Description</label>
-            <div>blah blah blah</div>
-            <h3>Subtasks</h3>
+            <h3>Task Details</h3>
+
+            <label for="details-title">Title</label>
+            <input id="details-title" type="text" />
+
+            <label for="details-description">Description</label>
+            <textarea id="details-description"></textarea>
+
+            <label for="details-date">Due Date</label>
+            <input id="details-date" type="date" />
+
+            <label for="details-priority">Priority</label>
+            <select id="details-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <label for="details-category">Category</label>
+            <select id="details-category"></select>
+
             <div id="details-footer">
-                <button>Delete Task</button>
-                <button>Save Changes</button>
+                <button id="delete-task" type="button">Delete Task</button>
+                <button id="save-changes" type="button">Save Changes</button>
+            </div>
+        </div>
+    </div>
+    <div id="todo-modal" class="modal hidden">
+        <div class="modal-content">
+
+            <h2>New Task</h2>
+
+            <input id="modal-title" placeholder="Title" />
+            <textarea id="modal-description" placeholder="Description"></textarea>
+
+            <input id="modal-date" type="date" />
+
+            <select id="modal-category"></select>
+
+            <select id="modal-priority">
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+
+            <div class="modal-actions">
+                <button id="save-todo">Save</button>
+                <button id="close-modal">Cancel</button>
+            </div>
+            <p id="modal-error" class="error-message"></p>
+        </div>
+    </div>
+    <div id="category-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>New Category</h2>
+
+            <input id="category-name-input" placeholder="Category name" />
+
+            <p id="category-error" class="error-message"></p>
+
+            <div class="modal-actions">
+                <button id="save-category" type="button">Save</button>
+                <button id="close-category-modal" type="button">Cancel</button>
             </div>
         </div>
     </div>
