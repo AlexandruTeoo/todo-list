@@ -50,6 +50,7 @@ export function renderTodos(todos, onTodoClick) {
     todos.forEach(todo => {
         const todoItem = document.createElement("div");
         todoItem.classList.add("todo-item");
+        todoItem.classList.add(`priority-${todo.priority}`);
 
         todoItem.innerHTML = `
             <h3>${todo.title}</h3>
