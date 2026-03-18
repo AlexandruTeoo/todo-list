@@ -50,26 +50,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function getFilteredTodos() {
+        let filtered = todos;
         if (currentFilter.type === "today"){
             console.log(currentFilter.type);
-            return todos.filter(todo => isToday(todo.dueDate));
+            filtered = filtered.filter(todo => isToday(todo.dueDate));
         }
         if (currentFilter.type === "upcoming") {
             console.log(currentFilter.type);
-            return todos;
+            filtered = filtered.filter (todo => {
+                const today = new Date().toISOString().split("T")[0];
+                return todo.dueDate >= today;
+            });
         }
         if (currentFilter.type === "sticky") {
             console.log(currentFilter.type);
-            return todos.filter(todo => todo.category === currentFilter.value);
+            filtered = filtered.filter(todo => todo.category === currentFilter.value);
         }
         if (currentFilter.type === "calendar") {
             console.log(currentFilter.type);
-            return todos.filter(todo => todo.category === currentFilter.value);
+            filtered = filtered.filter(todo => todo.category === currentFilter.value);
         }
         if (currentFilter.type === "category") {
-            return todos.filter(todo => todo.category === currentFilter.value);
+            filtered = filtered.filter(todo => todo.category === currentFilter.value);
         }
-        return todos;
+        return filtered;
     }
 
     function updateView(){
