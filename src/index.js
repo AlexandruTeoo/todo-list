@@ -33,7 +33,6 @@ import {
 } from "./dom.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-
     let todos = loadTodos();
     let categories = loadCategories();
     let currentFilter = {type: "all"};
@@ -77,8 +76,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const filtered = getFilteredTodos();
 
         setListTitle(currentFilter);
+        closeDetails();
+        selectedTodo = null;
 
         renderTodos(filtered, (todo) => {
+            const isSameTodo = selectedTodo && selectedTodo.id === todo.id;
+            const panelIsOpen = document.querySelector(".todo-detailsPanel").classList.contains("open");
+
+            if (isSameTodo && panelIsOpen){
+                closeDetails();
+                selectedTodo = null;
+                return;
+            }
+
             selectedTodo = todo;
             openDetails(todo, categories);
         });
